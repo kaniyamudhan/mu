@@ -9,7 +9,7 @@ import stripe
 app = Flask(__name__)
 
 # Stripe keys (replace with your actual keys)
-stripe.api_key = "sk_test_..."  # Your secret key
+stripe.api_key = ""  # Your secret key
 YOUR_DOMAIN = "http://localhost:5000"  # Replace with your actual domain
 
 nlp = spacy.load("en_core_web_sm")
@@ -18,7 +18,8 @@ conversations = {}
 def get_next_prompt(user_id):
     conversation = conversations.get(user_id, {})
     
-    if 'name' not in conversation:
+    # if 'name' not in conversation:
+    if 'name'  in conversation:
         return "What's your name?"
     elif 'date' not in conversation:
         return "What date would you like to visit the museum?"
